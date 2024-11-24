@@ -8,5 +8,8 @@ export default {
     extend: {},
   },
   plugins: [],
+  build: {
+    outDir: 'dist', // Ensure this is set to 'dist' (default Vite output)
+  },
 }
 
