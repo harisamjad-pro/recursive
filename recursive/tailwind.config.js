@@ -7,9 +7,6 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
-  build: {
-    outDir: 'dist', // Ensure this is set to 'dist' (default Vite output)
-  },
+  plugins: []
 }
 
