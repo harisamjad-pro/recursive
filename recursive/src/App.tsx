@@ -3,6 +3,7 @@ import { IoChevronDown } from "react-icons/io5";
 import { RiOrganizationChart } from "react-icons/ri";
 import { IoMdPerson } from "react-icons/io";
 import { useState } from "react";
+import { data } from "./utils/data";
 
 type Department = {
   name: string,
@@ -10,55 +11,18 @@ type Department = {
 }
 
 const App = () => {
-  // department data
-  const departments: Department[] = [
-    {
-      name: "Sales", departments: [
-        { name: "Alice Johnson", departments: [] },
-        { name: "Bob Smith", departments: [] },
-        { name: "Charlie Brown", departments: [] },
-      ]
-    },
-    {
-      name: "Engineering", departments: [
-        {
-          name: "Frontend Team", departments: [
-            { name: "David Lee", departments: [] },
-            { name: "Eva White", departments: [] },
-          ]
-        },
-        {
-          name: "Backend Team", departments: [
-            { name: "Frank Harris", departments: [{ name: "Node.js", departments: [] }] },
-            { name: "Grace Kim", departments: [] },
-          ]
-        },
-      ]
-    },
-    {
-      name: "HR", departments: [
-        {
-          name: "Recruitment Team", departments: [
-            { name: "Helen Adams", departments: [] }
-          ]
-        }
-      ]
-    },
-  ];
+  // assign department data
+  const departments: Department[] = data;
 
   return (
-    <>
-      <div className="select-none px-12 py-12 flex flex-col gap-6 cursor-default">
-        <h1 className="text-2xl font-semibold">Recursive React Component</h1>
-        <div className="flex flex-col gap-1 w-fit border rounded-lg px-4 py-2">
-          {departments.map((department) => (
-            <>
-              {department.name && <Department department={department} key={department.name} />}
-            </>
-          ))}
-        </div>
+    <div className="select-none px-12 py-12 flex flex-col gap-6 cursor-default">
+      <h1 className="text-2xl font-semibold">Recursive React Component</h1>
+      <div className="flex flex-col gap-1 w-96 border rounded-lg px-4 py-2">
+        {departments.map((department) => (
+          department.name && <Department department={department} key={department.name} />
+        ))}
       </div>
-    </>
+    </div>
   )
 }
 
@@ -81,7 +45,7 @@ const Department = ({ department }: { department: Department }) => {
       </div>
 
       {open && department.departments?.map((subdepartment: Department) => (
-        <div className="ml-6 flex flex-col gap-1 w-fit">
+        <div className="ml-6 flex flex-col gap-1" key={subdepartment.name}>
           {subdepartment.name && <Department department={subdepartment} key={subdepartment.name} />}
         </div>
       ))}
