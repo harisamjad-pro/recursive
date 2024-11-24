@@ -32,7 +32,7 @@ const Department = ({ department }: { department: Department }) => {
 
   return (
     <>
-      <div onClick={() => setOpen(!open)} className={`flex gap-1 items-center ${department.departments?.length ? "cursor-pointer" : "cursor-default"}`}>
+      <div onClick={() => setOpen(!open)} className={`w-fit flex gap-1 items-center ${department.departments?.length ? "cursor-pointer" : "cursor-default"}`}>
         {department.departments?.length ? (
           <>
             {!open ? <IoChevronForward className="size-4 text-gray-600" /> : <IoChevronDown className="size-4 text-gray-600" />}
